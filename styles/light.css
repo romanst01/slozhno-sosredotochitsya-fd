@@ -20,18 +20,11 @@
   --header-logo-color:#ffc2e6;
   --footer-logo-color:#ffc2e6;
 }
-.theme-light .header-rec {
+.theme-light .header__rec,  {
   display: none;
 }
-.header__logo {
-  color:var(--header-logo-color) ;
-  font-size: 157px;
-  font-weight: 700;
-}
-.title-decor {
-  color: #353430;
- 
-}
+
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -46,7 +39,7 @@
     --header-logo-color:#ffc2e6;
     --footer-logo-color:#ffc2e6;
   }
-  .header-rec {
+  .header__rec {
     display: none;
   }
 }

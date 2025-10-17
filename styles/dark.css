@@ -18,12 +18,7 @@
 }
 
 
-.header__logo {
-  color:var(--header-logo-color) ;
-  font-size: 157px;
-  font-weight: 700;
-  ;
-}
+
 
 .title-decor {
   color: #000028;
@@ -74,6 +69,6 @@
   inset-inline-start: var(--main-gap);
   inset-block-end: var(--main-gap);
 }
-.theme-dark .header-rec {
+.theme-dark .header__rec {
   display: block;
 }
