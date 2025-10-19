@@ -5,25 +5,50 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  background-color: var(--main-bg-color);
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+}
+
+.header {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  justify-items: end;
+  align-items: center;
+  block-size: 100vh; 
+  min-height: 668px;
+  padding: var(--section-padding);
+}
+
+.header__theme-menu {
+  
+}
+
+.header__theme-menu-item {
+  font-size: var(--main-text-size) ;
 }
 
 .header__theme-menu-list {
   display: flex;
   flex-direction: column;
-  gap: 11.5px;
+  gap: 6px;
   list-style: none;
-  padding-top: 75px;
+  
 }
 
 .header__theme-menu-button {
   background: transparent;
   color: var(--nav-color);
   border: 1px solid transparent;
-  padding: 2px 13px;
+  padding: 1px 13px;
   cursor: pointer;
   text-transform: lowercase;
   font-size: var(--main-text-size);
+}
+
+.header__theme-menu-button_active {
+  border-color: var(--nav-color);
+  pointer-events: none;
 }
 
 .header__theme-menu-button:hover {
@@ -38,15 +63,49 @@
   border-bottom: 1px solid var(--nav-color);
 }
 
-.header {
-  position: relative;
-  display: grid;
-  grid-template-rows: 1fr min-content 1fr;
-  justify-items: end;
-  align-items: center;
-  block-size: 100vh; 
-  min-height: 668px;
-  padding: var(--section-padding);
+.header__rec {
+  position: absolute;
+  color: var(--nav-color);
+  font-size: var(--main-text-size);
+  line-height: var(--main-line-height);
+  text-transform: uppercase;
+  inset-inline-end: calc(var(--main-gap) + 28px);
+  inset-block-start: calc(var(--main-gap) + 2px);
+}
+
+.header__rec::after {
+  content: '';
+  position: absolute;
+  inline-size: 10px;
+  block-size: 10px;
+  margin: -5px -20px 0 0;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 2px var(--nav-color);
+  background-color: var(--nav-color);
+  inset-inline-end: 0;
+  inset-block-start: 50%;
+}
+
+.decorated-zone::before {
+  content: '';
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  border-inline-end: 1px solid var(--nav-color);
+  border-block-start: 1px solid var(--nav-color);
+  inset-inline-end: var(--main-gap);
+  inset-block-start: var(--main-gap);
+}
+
+.decorated-zone::after {
+  content: '';
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  border-inline-start: 1px solid var(--nav-color);
+  border-block-end: 1px solid var(--nav-color);
+  inset-inline-start: var(--main-gap);
+  inset-block-end: var(--main-gap);
 }
 
 .header__logo {
@@ -57,6 +116,7 @@
   text-shadow: 4px 4px 0 var(--accent-color);
   justify-self: start;
   align-self: center;
+  margin: 0;
 }
 
 .header__paragraph {
@@ -66,9 +126,13 @@
   max-inline-size: 491px;
 }
 
+.header__text {
+
+}
+
 body {
   font-family: var(--main-font-family, monospace);
-  font-size: 16px;
+ 
   line-height: 1.5;
   background-color: var(--main-bg-color, #fff);
 }
@@ -85,18 +149,17 @@ body {
 .text-block {
   display: grid;
   grid-template-rows: min-content 1fr;
-
 }
 
 .content-section__title {
-  color: var(--accent-color);
+  color: var(--section-heading-color);
   margin-bottom: 20px;
   font-weight: 700;
   font-size: 18px;
 }
 .text-block__heading, .text-block__subtitle {
   background-color: var(--accent-color);
-  color: var(--main-bg-color);
+  color: var(--main-heading-color);
   margin-bottom: 10px;
   font-size: 18px;
 }
@@ -138,17 +201,76 @@ body {
   gap: 10px;
 }
 .gallery__image {
-  max-width:355px;
+  width:100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footer {
+  position: relative;
+  display: grid;
+  place-items: center;
+  block-size: 100vh;
+  min-block-size: 668px;
+  padding: var(--main-gap);
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.link:hover {
+  border-bottom: 1px solid var(--main-text-color);
+}
+
+.link:focus {
+  outline: none;
+}
+
+.link:focus-visible {
+  outline: 1px solid var(--main-text-color);
+}
+
+.text-block__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 @media (width >=768px ) {
+
   .content {
     padding: 20px;
   }
+
   .content-section {
     display:grid;
     grid-template-columns: 1fr 2fr;
     column-gap: 20px;
+  }
+
+  .gallery__content {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: var(--main-gap);
+  }
+  
+  .gallery__image:first-child {
+    grid-column: span 2;
+  }
+  
+  .gallery__image:nth-child(2) {
+    grid-row: span 2;
+  }
+  
+  .gallery__image:nth-child(3) {
+    grid-row: span 2;
+  }
+  
+  .gallery__image:last-child {
+    grid-column: span 2;
   }
 }  
 
