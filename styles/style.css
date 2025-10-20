@@ -17,12 +17,9 @@
   align-items: center;
   block-size: 100vh; 
   min-height: 668px;
-  padding: var(--section-padding);
+  padding: var(--main-gap);
 }
 
-.header__theme-menu {
-  
-}
 
 .header__theme-menu-item {
   font-size: var(--main-text-size) ;
@@ -131,14 +128,13 @@
 
 body {
   font-family: var(--main-font-family, monospace);
- 
   line-height: 1.5;
   background-color: var(--main-bg-color, #fff);
 }
 .content {
   display: grid;
-  gap: 50px;
-  padding: 40px var(--main-gap);
+  gap: var(--content-gap);
+  padding: var(--section-padding) var(--main-gap);
   font-size: 18px;
 }
 .content-section {
@@ -243,13 +239,15 @@ body {
 
 .footer__logo {
   text-shadow: 2px 2px 0 var(--accent-color);
+  justify-self: center;
 }
 
 @media (width >=768px ) {
 
-  .content {
-    padding: 20px;
+  .header {
+    padding-inline-start: 0;
   }
+
 
   .content-section {
     display:grid;
@@ -258,14 +256,26 @@ body {
   }
 
   .causes {
-  .content-section__title {
-    max-width: 236px;
+    grid-template-columns: 1fr;
+    .content-section__title {
+      max-width: 236px;
+    }
+  }
+  
+  .header__paragraph {
+    inline-size: 364px;
+    block-size: 117px;
+  }
+
+  .gallery.content-section {
+    display: block; 
   }
 
   .gallery__content {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, auto);
     gap: var(--main-gap);
+    padding-top: 10px;
   }
   
   .gallery__image:first-child {
@@ -283,11 +293,15 @@ body {
   .gallery__image:last-child {
     grid-column: span 2;
   }
+  
 }  
 
 @media (width >=1024px) {
-  .content {
-    padding: 20px;
+  
+
+  .header__theme-menu {
+    justify-self: center;
+    align-self: start;
   }
   .content-section {
     display:grid;
@@ -296,9 +310,28 @@ body {
   }
   .text-blocks {
     grid-column: span 2;
-    grid-template-columns: repeat(3, 1fr);
   }
+
+  .causes.content-section {
+    grid-template-columns: 1fr; 
+  }
+
+  .causes {
+    .content-section__title {
+      max-width: 315px;
+    }
+  }
+  
+  .causes .text-blocks {
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+  }
+    
   .header__theme-menu-list {
     flex-direction: row;
+  }
+  .header__paragraph {
+    inline-size: 491px;
+    block-size: 71px;
   }
 }
